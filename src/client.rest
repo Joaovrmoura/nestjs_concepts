@@ -1,0 +1,18 @@
+### rota localhost/home/user
+@baseUrl = http://localhost:3000
+
+### exemplo de rota
+# @name appControllerGetUser
+GET  {{baseUrl}}/home/user
+
+### outra rota
+# @name appControlerRotaTest
+GET {{baseUrl}}/home/test/
+
+### manual-concepts
+# @name manualConceptsController
+GET {{baseUrl}}/manual-concepts/
+
+### automatic-concepts
+# @name automatic-conceptsController
+GET {{baseUrl}}/automatic-concepts/
