@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConceptsModule } from 'src/manual-concepts/concepts.module';
-import { AutomaticConceptsModule } from 'src/automatic-concepts/automatic-concepts.module';
+import { MessagesModule } from 'src/messages/messages.module';
+// import { ConceptsModule } from 'src/manual-concepts/manual-concepts.module';
+// import { AutomaticConceptsModule } from 'src/automatic-concepts/automatic-concepts.module';
 
-// módulo principal que importa outros módulos
+// main module that imports other modules
 @Module({
-  imports: [ConceptsModule, AutomaticConceptsModule],
+  imports: [MessagesModule],
   controllers: [AppController],
   providers: [AppService],
 })

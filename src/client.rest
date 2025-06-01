@@ -1,6 +1,16 @@
 ### rota localhost/home/user
 @baseUrl = http://localhost:3000
 
+
+### messages routes
+# @name FindAll
+GET {{baseUrl}}/messages/
+
+###
+GET {{baseUrl}}/messages/25/
+
+###
+
 ### exemplo de rota
 # @name appControllerGetUser
 GET  {{baseUrl}}/home/user

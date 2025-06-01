@@ -12,6 +12,6 @@ export class AppController {
 
   @Get('test')
   teste(): string {
-    return 'find route with successfully';
+    return this.appService.soluctionExemple();
   }
 }
