@@ -1,17 +1,29 @@
 ### rota localhost/home/user
 @baseUrl = http://localhost:3000
 
-
-### messages routes
-# @name FindAll
+### messages routes modulov2
 GET {{baseUrl}}/messages/
-
 ###
 GET {{baseUrl}}/messages/25/
-
+###
+POST {{baseUrl}}/messages/
+Content-Type: application/json
 ###
 
-### exemplo de rota
+PATCH {{baseUrl}}/messages/52/
+Content-Type: application/json
+
+
+
+{
+    "message": "joao está com sede",
+    "new Message": "outra menssagem, não esta com fome"
+}
+###
+
+
+
+### exemplo de rota modulov1
 # @name appControllerGetUser
 GET  {{baseUrl}}/home/user
 
