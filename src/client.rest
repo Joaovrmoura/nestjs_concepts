@@ -1,40 +1,52 @@
 ### rota localhost/home/user
 @baseUrl = http://localhost:3000
+### messages routes ###
 
-### messages routes modulov2
+### findAll
 GET {{baseUrl}}/messages/
-###
-GET {{baseUrl}}/messages/25/
-###
+
+### findOne
+GET {{baseUrl}}/messages/2/
+
+### create
 POST {{baseUrl}}/messages/
 Content-Type: application/json
-###
 
-PATCH {{baseUrl}}/messages/52/
+ {
+    "text": "novo recado",
+    "de": "maria",
+    "for": "joao",
+    "read": true,
+    "data": "2025-06-03T13:02:06.580Z"
+}
+
+### update 
+PATCH {{baseUrl}}/messages/2/
 Content-Type: application/json
 
-
-
-{
-    "message": "joao está com sede",
-    "new Message": "outra menssagem, não esta com fome"
+ {
+    "text": "Novo recado",
+    "de": "maria",
+    "for": "joao",
+    "read": true,
+    "data": "2025-06-03T13:02:06.580Z"
 }
-###
+### delete 
+DELETE {{baseUrl}}/messages/2/
 
 
+# ### exemplo de rota modulov1
+# # @name appControllerGetUser
+# GET  {{baseUrl}}/home/user
 
-### exemplo de rota modulov1
-# @name appControllerGetUser
-GET  {{baseUrl}}/home/user
+# ### outra rota
+# # @name appControlerRotaTest
+# GET {{baseUrl}}/home/test/
 
-### outra rota
-# @name appControlerRotaTest
-GET {{baseUrl}}/home/test/
+# ### manual-concepts
+# # @name manualConceptsController
+# GET {{baseUrl}}/manual-concepts/
 
-### manual-concepts
-# @name manualConceptsController
-GET {{baseUrl}}/manual-concepts/
-
-### automatic-concepts
-# @name automatic-conceptsController
-GET {{baseUrl}}/automatic-concepts/
+# ### automatic-concepts
+# # @name automatic-conceptsController
+# GET {{baseUrl}}/automatic-concepts/
