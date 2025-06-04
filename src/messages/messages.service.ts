@@ -1,14 +1,17 @@
-import { Body, Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { MessageEntity } from './entities/messge.entity';
+import { NotFoundError } from 'rxjs';
+import { CreateMessagesDto } from './dto/create-message.dto';
+import { UpdateMessagesDto } from './dto/update-message.dto';
 
 @Injectable()
 export class messagesService {
   private lastId = 1;
-  private messages: Array<MessageEntity> = [
+  private messages: MessageEntity[] = [
     {
       id: 2,
       text: 'como vai o seu mundo?',
-      de: 'maria',
+      from: 'maria',
       for: 'joao',
       read: true,
       data: new Date(),
@@ -18,18 +21,53 @@ export class messagesService {
     return this.messages;
   }
   findOne(id: string) {
-    return this.messages.find((item) => item.id === +id);
+    const message = this.messages.find((item) => item.id === +id);
+    if (message) return message;
+    // throw new HttpException('Error from server ', HttpStatus.NOT_FOUND);
+    throw new NotFoundException('Error from Server');
   }
   serviceMessage() {
     return `Hello world`;
   }
-  create(body: object) {
+  create(createMessageDto: CreateMessagesDto) {
     this.lastId++;
     const id = this.lastId;
     const newMessage = {
       id,
-      ...body,
+      ...createMessageDto,
+      read: false,
+      data: new Date(),
     };
     this.messages.push(newMessage);
+    return newMessage;
+  }
+
+  update(id: string, updateMessageDto: UpdateMessagesDto) {
+    const messageExistsIndex = this.messages.findIndex(
+      (item) => item.id === +id,
+    );
+    if (messageExistsIndex < 0) {
+      throw new NotFoundError('Index not existis ');
+    }
+    if (messageExistsIndex >= 0) {
+      const messageExiste = this.messages[messageExistsIndex];
+      this.messages[messageExistsIndex] = {
+        ...messageExiste,
+        ...updateMessageDto,
+      };
+    }
+  }
+
+  remove(id: string) {
+    const messageExistsIndex = this.messages.findIndex(
+      (item) => item.id === +id,
+    );
+
+    if (messageExistsIndex < 0) {
+      throw new NotFoundError('Index not existis ');
+    }
+    if (messageExistsIndex >= 0) {
+      this.messages.splice(messageExistsIndex, 1);
+    }
   }
 }
