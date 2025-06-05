@@ -1,7 +1,7 @@
 import { IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
 
 export class CreateMessagesDto {
-  @IsString() 
+  @IsString()
   @IsNotEmpty()
   @MinLength(5)
   @MaxLength(255)

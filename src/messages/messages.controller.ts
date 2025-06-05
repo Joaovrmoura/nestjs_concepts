@@ -6,11 +6,13 @@ import {
   HttpCode,
   HttpStatus,
   Param,
+  ParseIntPipe,
   Patch,
   Post,
 } from '@nestjs/common';
 import { messagesService } from './messages.service';
 import { CreateMessagesDto } from './dto/create-message.dto';
+import { UpdateMessagesDto } from './dto/update-message.dto';
 // Patch is used to update a data of a recurse
 // Put is used for update entire data of a recurse
 
@@ -38,12 +40,17 @@ export class MessagesController {
   }
   // update a message
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateMessageDto: object) {
+  update(@Param('id') id: string, @Body() updateMessageDto: UpdateMessagesDto) {
+    console.log(
+      UpdateMessagesDto.constructor.name,
+      updateMessageDto instanceof UpdateMessagesDto,
+    );
     return this.messageService.update(id, updateMessageDto);
   }
   // delete a message
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id', ParseIntPipe) id: number) {
+    console.log(id, typeof id);
     return this.messageService.remove(id);
   }
 }

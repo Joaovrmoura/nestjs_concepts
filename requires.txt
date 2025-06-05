@@ -1,0 +1,21 @@
+ npm i @nestjs/mapped-types
+
+npm i class-validator
+npm i class-transformer
+
+// no main.ts
+ app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true, // Remove automaticamente propriedades que NÃO existem no DTO
+      forbidNonWhitelisted: true, // Se o corpo da requisição contiver propriedades extras, lança um erro
+    }),
+  );
+
+
+ParseIntPipe, ParseFloatPipe , ParseArrayPipe, ParseEnumPipe etc...
+// delete a message
+@Delete(':id')
+    remove(@Param('id', ParseIntPipe) id: number) {
+    console.log(id, typeof id);
+    return this.messageService.remove(id);
+}

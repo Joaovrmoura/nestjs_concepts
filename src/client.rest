@@ -6,33 +6,27 @@
 GET {{baseUrl}}/messages/
 
 ### findOne
-GET {{baseUrl}}/messages/2/
+GET {{baseUrl}}/messages/4/
 
 ### create
 POST {{baseUrl}}/messages/
 Content-Type: application/json
 
  {
-    "text": "novo recado",
-    "de": "maria",
-    "for": "joao",
-    "read": true,
-    "data": "2025-06-03T13:02:06.580Z"
+    "text": "abas3wwef das",
+    "from": "maria",
+    "for": "joao"
 }
 
 ### update 
 PATCH {{baseUrl}}/messages/2/
 Content-Type: application/json
 
- {
-    "text": "Novo recado",
-    "de": "maria",
-    "for": "joao",
-    "read": true,
-    "data": "2025-06-03T13:02:06.580Z"
+{
+    "text": "Novo assad"
 }
 ### delete 
-DELETE {{baseUrl}}/messages/2/
+DELETE {{baseUrl}}/messages/2
 
 
 # ### exemplo de rota modulov1
