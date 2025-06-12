@@ -6,14 +6,14 @@
 GET {{baseUrl}}/messages/
 
 ### findOne
-GET {{baseUrl}}/messages/4/
+GET {{baseUrl}}/messages/1/
 
 ### create
 POST {{baseUrl}}/messages/
 Content-Type: application/json
 
  {
-    "text": "abas3wwef das",
+    "text": "hotel california ",
     "from": "maria",
     "for": "joao"
 }

@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { MessageEntity } from './entities/messge.entity';
 import { NotFoundError } from 'rxjs';
-import { CreateMessagesDto } from './dto/create-message.dto';
-import { UpdateMessagesDto } from './dto/update-message.dto';
+import { CreateMessagesDto } from '../common/dto/create-message.dto';
+import { UpdateMessagesDto } from '../common/dto/update-message.dto';
 
 @Injectable()
 export class messagesService {
@@ -49,13 +49,12 @@ export class messagesService {
     if (messageExistsIndex < 0) {
       throw new NotFoundError('Index not existis ');
     }
-    if (messageExistsIndex >= 0) {
-      const messageExiste = this.messages[messageExistsIndex];
-      this.messages[messageExistsIndex] = {
-        ...messageExiste,
-        ...updateMessageDto,
-      };
-    }
+
+    const messageExiste = this.messages[messageExistsIndex];
+    this.messages[messageExistsIndex] = {
+      ...messageExiste,
+      ...updateMessageDto,
+    };
   }
 
   remove(id: number) {

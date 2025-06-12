@@ -19,3 +19,10 @@ ParseIntPipe, ParseFloatPipe , ParseArrayPipe, ParseEnumPipe etc...
     console.log(id, typeof id);
     return this.messageService.remove(id);
 }
+
+
+// temos que ter cuidado e saber se o pipe dever ser
+usado globalmente ou no decorator
+exe: Todas as rotas usam o ParseIntPipe(todos os params devem ser int)
+@Controller('users')
+@UsePipes(ParseIntPipe)
