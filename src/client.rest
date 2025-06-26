@@ -91,3 +91,19 @@ Content-Type: application/json
 ### delete
 DELETE {{baseUrl}}/api/categories/3
 ### CATEGORY ###
+
+
+
+### AUTH ###
+
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "joao77833@gmail.com",
+  "username": "joaov8e8",
+  "password": "joao12356"
+}
+
+### AUTH ###
+

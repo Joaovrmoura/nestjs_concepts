@@ -4,6 +4,8 @@ import { ConfigModule } from '@nestjs/config';
 import { PostModule } from 'src/post/post.module';
 import { UserModule } from 'src/user/user.module';
 import { CategoryModule } from 'src/category/category.module';
+import { AuthModule } from 'src/auth/auth.module';
+
 // main module that imports other modules
 @Module({
   imports: [
@@ -12,17 +14,18 @@ import { CategoryModule } from 'src/category/category.module';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: process.env.DB_HOST,
       port: 5432,
-      username: 'postgres',
-      database: 'postgres',
-      password: 'JoaoPostgres',
+      username: process.env.DB_USER,
+      database: process.env.DATABASE,
+      password: process.env.DB_PASSWORD,
       autoLoadEntities: true,
-      synchronize: true, // not use in prod
+      synchronize: false, // not use in prod
     }),
     PostModule,
     UserModule,
     CategoryModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
