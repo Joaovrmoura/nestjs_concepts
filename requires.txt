@@ -26,3 +26,20 @@ usado globalmente ou no decorator
 exe: Todas as rotas usam o ParseIntPipe(todos os params devem ser int)
 @Controller('users')
 @UsePipes(ParseIntPipe)
+
+
+////////////////////// aplicattion 
+
+Funcionalidade	O que precisa	Tempo médio estimado (horas)
+1. Configuração do ambiente	Instalar NestJS, MySQL, TypeORM, configurar .env, conexão banco	2h
+2. Modelagem do banco	Criar entidades (User, Service, Appointment), relacionamentos	3h
+3. Autenticação e autorização	JWT, registro/login, proteção de rotas, roles (admin/user)	4h
+4. CRUD de usuários	Endpoints para criar, listar, editar, deletar usuários	3h
+5. CRUD de serviços	Endpoints para gerenciar serviços oferecidos	3h
+6. CRUD de agendamentos	Criar, listar, editar, cancelar agendamentos	4h
+7. Validações	Validar dados com Pipes e class-validator	2h
+8. Tratamento de erros	Middleware ou filters para erros globais	1.5h
+9. Documentação API	Swagger para documentação das rotas	1.5h
+10. Testes básicos	Testes unitários e integração (Jest)	4h
+11. Implantação (deploy)	Docker, deploy no Railway/Render, configuração variáveis ambiente	3h
+12. Extras opcionais	Filtros (data, usuário), paginação, envio de email

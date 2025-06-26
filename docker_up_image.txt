@@ -1,0 +1,51 @@
+no windows abra o wsl
+
+navegue até o diretório do projeto, na raiz onde existe a imagem docker
+
+use o comando no meu caso o comando para o postgreSQL
+docker-compose up -d database
+
+verifique se foi 
+docker ps
+
+se foi execute
+docker-compose exec database bash
+
+depois (my_db é o nome do usuário do banco)
+psql -h localhost -d my_db -U manager
+
+services:
+  database:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=my_db
+      - POSTGRES_USER=manager
+      - POSTGRES_PASSWORD=postgres
+
+    ports:
+      - '5432:5432'
+    volumes:
+      - /home/joaov/docker/postgres_data:/var/lib/postgresql/data
+
+    - ./postgres_data:/var/lib/postgresql
+
+TEM QUE TER INSTALADO
+sudo apt update
+sudo apt install postgresql-client
+
+/// outra coisa!
+
+FROM node:latest
+
+WORKDIR /user/src/conceitos_nest
+
+COPY . .
+COPY ./env ./envProd
+
+RUN npm install --quiet --no-opotional --no-found --loglevel=error
+
+RUN npm build
+
+CMD ["npm", "run", "start:prod"]
+
+

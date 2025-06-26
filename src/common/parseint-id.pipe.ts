@@ -14,8 +14,6 @@ import {
 @Injectable()
 export class ParseIntIdPipe implements PipeTransform {
   transform(value: any, metadata: ArgumentMetadata) {
-    console.log('Pipe Executado!');
-
     if (metadata.type !== 'param' || metadata.data !== 'id') {
       return value;
     }
@@ -27,7 +25,7 @@ export class ParseIntIdPipe implements PipeTransform {
     }
     if (parsedValue < 0) {
       throw new BadRequestException(
-        'ParseIntPipe await a number bigger than zero',
+        'ParseIntPipe awaita number bigger than zero',
       );
     }
     return value;

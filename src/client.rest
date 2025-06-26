@@ -1,46 +1,93 @@
 ### rota localhost/home/user
-@baseUrl = http://localhost:3000
-### messages routes ###
+@baseUrl = http://localhost:5000
 
+###
+GET {{baseUrl}}/api/docs
+### POSTS ###
 ### findAll
-GET {{baseUrl}}/messages/
+GET {{baseUrl}}/api/posts/
 
 ### findOne
-GET {{baseUrl}}/messages/1/
+GET {{baseUrl}}/api/posts/1
 
 ### create
-POST {{baseUrl}}/messages/
-Content-Type: application/json
-
- {
-    "text": "hotel california ",
-    "from": "maria",
-    "for": "joao"
-}
-
-### update 
-PATCH {{baseUrl}}/messages/2/
+POST {{baseUrl}}/api/posts/
 Content-Type: application/json
 
 {
-    "text": "Novo assad"
+  "title": "Meu post",
+  "body": "C",
+  "authorId": 1,
+  "categoryId": 2
 }
-### delete 
-DELETE {{baseUrl}}/messages/2
+
+### update
+PUT {{baseUrl}}/api/posts/id
+
+### delete
+DELETE {{baseUrl}}/api/posts/1
+
+### POSTS ###
 
 
-# ### exemplo de rota modulov1
-# # @name appControllerGetUser
-# GET  {{baseUrl}}/home/user
 
-# ### outra rota
-# # @name appControlerRotaTest
-# GET {{baseUrl}}/home/test/
 
-# ### manual-concepts
-# # @name manualConceptsController
-# GET {{baseUrl}}/manual-concepts/
 
-# ### automatic-concepts
-# # @name automatic-conceptsController
-# GET {{baseUrl}}/automatic-concepts/
+### USERS ###
+### findAll
+GET {{baseUrl}}/api/users
+
+### findOne
+GET {{baseUrl}}/api/users/5
+
+### create
+POST {{baseUrl}}/api/users
+Content-Type: application/json
+
+{
+  "email": "joao5@gmail.com",
+  "username": "joaov6",
+  "password": "joao12356"
+}
+
+### update
+PATCH  {{baseUrl}}/api/users/1
+Content-Type: application/json
+
+{
+  "password": "joao UPDATE"
+}
+
+### delete
+DELETE {{baseUrl}}/api/users/id
+### USERS ###
+
+
+### CATEGORY ###
+### findAll
+GET {{baseUrl}}/api/categories
+
+### findOne
+GET {{baseUrl}}/api/categories/50
+
+### create
+POST {{baseUrl}}/api/categories
+Content-Type: application/json
+
+{
+  "title": "js",
+  "description":  "Nest and fastfy"
+}
+
+### update
+PATCH {{baseUrl}}/api/categories/2
+Content-Type: application/json
+
+{
+  "title": "js",
+  "description":  "Nest, fastfy and React"
+}
+
+### delete
+DELETE {{baseUrl}}/api/categories/3
+### CATEGORY ###

@@ -2,7 +2,10 @@
 /dist
 /node_modules
 /build
+requires.txt
 
+## postgreSQL
+/postgres_data
 # Logs
 logs
 *.log
